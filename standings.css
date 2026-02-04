@@ -97,6 +97,36 @@ body.page-standings .standings-tabs {
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
 }
 
+/* Indicador de flecha: se usa el wrapper para posicionar la flecha sobre el select */
+.standings-select-wrap {
+    position: relative;
+}
+
+.standings-select {
+    padding-right: 44px; /* espacio para la flecha */
+}
+
+.standings-select-wrap::after {
+    content: "";
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid rgba(255,255,255,0.95);
+    pointer-events: none;
+    opacity: 0.95;
+}
+
+/* Pequeña rotación al enfocar para feedback visual */
+.standings-select:focus + .standings-select-wrap::after,
+.standings-select:active + .standings-select-wrap::after {
+    transform: translateY(-50%) scale(0.98);
+}
+
 .visually-hidden {
     position: absolute !important;
     height: 1px; width: 1px;
