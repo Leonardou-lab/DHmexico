@@ -1,0 +1,113 @@
+/* ================================
+   EVENTS – FULL BLEED NO GAPS
+   ================================ */
+
+/* Contenedor principal de eventos */
+body.page-eventos .events-page {
+  margin: 0;
+  padding: 0;
+}
+
+/* Grid de eventos */
+body.page-eventos .events-screen {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100vw;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+
+/* Cada tarjeta */
+body.page-eventos .event-tile {
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  height: 100vh; /* fuerza continuidad vertical */
+}
+
+/* Overlay no afecta layout */
+body.page-eventos .event-overlay {
+  border-radius: 0;
+}
+
+/* Quita espacio ENTRE bloques de eventos */
+body.page-eventos .events-screen + .events-screen {
+  margin-top: 0;
+}
+
+/* Quita espacio con la sección siguiente */
+body.page-eventos .events-page + section,
+body.page-eventos .events-screen:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Seguridad extra: siguiente sección no empuja */
+body.page-eventos section:not(.events-page) {
+  margin-top: 0;
+  padding-top: 0;
+}
+/* ================================
+   RESPONSIVE – TABLET Y MÓVIL
+   ================================ */
+
+@media (max-width: 1024px) {
+  body.page-eventos .events-screen {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  body.page-eventos .event-tile {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 768px) {
+  body.page-eventos .events-screen {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  body.page-eventos .event-tile {
+    height: 60vh;
+    min-height: 500px;
+  }
+
+  body.page-eventos .event-content {
+    left: 24px;
+    bottom: 32px;
+  }
+
+  body.page-eventos .event-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  body.page-eventos .event-date {
+    font-size: 0.9rem;
+  }
+
+  body.page-eventos .event-cta {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body.page-eventos .event-tile {
+    height: 55vh;
+    min-height: 400px;
+  }
+
+  body.page-eventos .event-content {
+    left: 16px;
+    bottom: 24px;
+  }
+
+  body.page-eventos .event-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  body.page-eventos .event-date {
+    font-size: 0.85rem;
+  }
+}
