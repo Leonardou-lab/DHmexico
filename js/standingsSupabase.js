@@ -116,6 +116,9 @@
         const tableName = CATEGORY_TABLES[category] || CATEGORY_TABLES[DEFAULT_CATEGORY];
         setActiveTab(tab, tabs);
         loadStandings(tableName);
+        // Si existe un select móvil, sincronizar su valor
+        const mobileSelect = document.getElementById("standingsSelect");
+        if (mobileSelect) mobileSelect.value = category;
       });
     });
 
@@ -124,6 +127,23 @@
     const defaultTable = CATEGORY_TABLES[defaultCategory] || CATEGORY_TABLES[DEFAULT_CATEGORY];
     if (defaultTab) setActiveTab(defaultTab, tabs);
     loadStandings(defaultTable);
+
+    // Mobile select: sincronizar y reaccionar a cambios
+    const mobileSelect = document.getElementById("standingsSelect");
+    if (mobileSelect) {
+      // set initial value
+      mobileSelect.value = defaultCategory;
+      mobileSelect.addEventListener("change", (e) => {
+        const value = e.target.value || DEFAULT_CATEGORY;
+        // encontrar el tab correspondiente y activarlo
+        const targetTab = tabs.find((t) => (t.dataset.cat || "") === value);
+        if (targetTab) {
+          setActiveTab(targetTab, tabs);
+          const tableName = CATEGORY_TABLES[value] || CATEGORY_TABLES[DEFAULT_CATEGORY];
+          loadStandings(tableName);
+        }
+      });
+    }
   };
 
   if (document.readyState === "loading") {

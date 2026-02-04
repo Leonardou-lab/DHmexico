@@ -50,6 +50,20 @@
             <button class="tab" data-cat="master-b" role="tab" aria-selected="false">Master 40</button>
             <button class="tab" data-cat="master-c" role="tab" aria-selected="false">Master 50</button>
         </div>
+
+        <!-- Select dropdown para móvil: se mostrará sólo en pantallas pequeñas -->
+        <div class="standings-select-wrap" aria-hidden="true">
+            <label for="standingsSelect" class="visually-hidden">Seleccionar categoría</label>
+            <select id="standingsSelect" class="standings-select" aria-label="Seleccionar categoría de standings">
+                <option value="elite">Elite Varonil</option>
+                <option value="femenil-elite">Elite Femenil</option>
+                <option value="junior">Junior Varonil</option>
+                <option value="infantil">Cadetes</option>
+                <option value="master-a">Master 30</option>
+                <option value="master-b">Master 40</option>
+                <option value="master-c">Master 50</option>
+            </select>
+        </div>
     </section>
 
     <section class="standings-table-wrap">
